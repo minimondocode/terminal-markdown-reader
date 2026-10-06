@@ -1,6 +1,6 @@
 [project]
 name = "terminal_markdown_reader"
-version = "1.0.0"
+version = "1.0.1"
 description = "tmr: read a folder's markdown in the terminal, with its files alongside"
 readme = "README.md"
 license = "MIT"
