@@ -1,0 +1,83 @@
+[project]
+name = "terminal_markdown_reader"
+version = "1.0.0"
+description = "tmr: read a folder's markdown in the terminal, with its files alongside"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "minimondocode" }
+]
+keywords = ["markdown", "terminal", "tui", "textual", "viewer", "file-explorer", "agents"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Text Processing :: Markup :: Markdown",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.13"
+dependencies = [
+    "markdown-it-py[linkify]>=4.0",
+    "mdit-py-plugins>=0.5",
+    "pillow>=11",
+    "termaid>=0.8.0",
+    "textual[syntax]>=8.2.8,<8.3",
+    "textual-image>=0.14.0",
+    "watchfiles>=1.3.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/minimondocode/terminal-markdown-reader"
+Issues = "https://github.com/minimondocode/terminal-markdown-reader/issues"
+Changelog = "https://github.com/minimondocode/terminal-markdown-reader/blob/main/CHANGELOG.md"
+
+[project.scripts]
+tmr = "tmr:main"
+
+[build-system]
+requires = ["uv_build>=0.10.7,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "tmr"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "pytest-xdist>=3.8.0",
+    "ruff>=0.14",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-n auto"
+
+[tool.ruff]
+line-length = 110
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+ignore = [
+    "E501",    # long lines: comments and docstrings are wrapped by hand
+    "RUF012",  # Textual's BINDINGS and COMPONENT_CLASSES are mutable class attributes by design
+    "RUF001", "RUF002", "RUF003",  # the UI uses typographic characters on purpose
+    "SIM102", "SIM108",  # nested ifs and if/else read better than clever one-liners here
+    "B019",    # lru_cache on a method is deliberate (draw_mermaid is a module function anyway)
+    "UP035",   # typing.Callable alongside collections.abc is fine
+    "SIM105",  # try/except/pass reads plainly; contextlib.suppress hides it
+    "B905",    # zip() over lists known to be the same length
+    "RUF005",  # [*a, b] over a + [b] is a matter of taste
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["tmr"]
