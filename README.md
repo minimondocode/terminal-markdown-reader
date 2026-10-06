@@ -8,6 +8,9 @@ quickly, copies as markdown, ticks checkboxes, and commits one file to git.
 
 ![tmr browsing a project's docs: the file list, a rendered document with a Mermaid diagram, find a file, the outline and search](https://raw.githubusercontent.com/minimondocode/terminal-markdown-reader/main/docs/tmr-demo.gif)
 
+Works on macOS and Linux (Python 3.13 or later). This is version 1 (1.0.2;
+`tmr --version` says which you have).
+
 ## Why tmr
 
 Markdown readers such as glow and frogmouth are made for reading. tmr is made
@@ -16,9 +19,6 @@ the agent changes it, new and changed files are marked in the list, the top
 shows about how many tokens the file is, `p` copies its path to paste back to
 the agent, `w` switches to the agent's worktree, `g` commits just that one
 file, and if you're editing when the agent saves, both sets of changes are kept.
-
-Works on macOS and Linux (Python 3.13 or later). This is version 1 (1.0.2;
-`tmr --version` says which you have).
 
 ## Install
 
