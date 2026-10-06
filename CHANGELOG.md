@@ -2,6 +2,11 @@
 
 What changed in each version of tmr. Versions follow [semantic versioning](https://semver.org/).
 
+## 1.0.2 (2026-10-06)
+
+- A much shorter README, with the settings in a table of their own. No changes
+  to tmr itself.
+
 ## 1.0.1 (2026-10-06)
 
 - The README, and so the PyPI page, opens with a demo GIF of tmr reading a

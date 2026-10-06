@@ -8,7 +8,7 @@ quickly, copies as markdown, ticks checkboxes, and commits one file to git.
 
 ![tmr browsing a project's docs: the file list, a rendered document with a Mermaid diagram, find a file, the outline and search](https://raw.githubusercontent.com/minimondocode/terminal-markdown-reader/main/docs/tmr-demo.gif)
 
-Works on macOS and Linux (Python 3.13 or later). This is version 1 (1.0.1;
+Works on macOS and Linux (Python 3.13 or later). This is version 1 (1.0.2;
 `tmr --version` says which you have).
 
 ## Install
