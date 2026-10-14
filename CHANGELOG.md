@@ -2,6 +2,11 @@
 
 What changed in each version of tmr. Versions follow [semantic versioning](https://semver.org/).
 
+## Unreleased
+
+- The file list shows markdown files with their `.md` extension, as they're
+  named on disk.
+
 ## 1.0.2 (2026-10-06)
 
 - A much shorter README, with the settings in a table of their own. No changes

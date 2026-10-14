@@ -168,13 +168,8 @@ class FileTree(DirectoryTree):
     def _name_label(
         self, node: TreeNode[DirEntry], base_style: Style, style: Style
     ) -> Text:
-        """The row as DirectoryTree draws it, but a markdown file without its
-        ".md": nearly everything listed is markdown, so it only takes up room."""
-        text = DirectoryTree.render_label(self, node, base_style, style)
-        path = node.data.path if node.data is not None else None
-        if path is not None and not node.allow_expand and path.suffix.lower() == ".md" and path.stem:
-            text.right_crop(len(path.suffix))
-        return text
+        """The row as DirectoryTree draws it: the full file name, extension and all."""
+        return DirectoryTree.render_label(self, node, base_style, style)
 
     def render_label(
         self, node: TreeNode[DirEntry], base_style: Style, style: Style

@@ -297,8 +297,8 @@ async def test_b_widens_just_enough_for_the_longest_name(folder: Path) -> None:
         await pilot.press("b")
         await settle(pilot)
         assert 20 < side.size.width < 50
-        assert name in shown() and "…" not in shown()
-        assert f"{name}  " in shown(), "a little air between the name and the scrollbar"
+        assert f"{name}.md" in shown() and "…" not in shown()
+        assert f"{name}.md  " in shown(), "a little air between the name and the scrollbar"
         await pilot.press("b")
         await settle(pilot)
         assert not side.display
@@ -336,7 +336,7 @@ async def test_b_hides_straight_away_when_the_names_fit(folder: Path) -> None:
         assert app.query_one("#side").size.width == 60
 
 
-async def test_markdown_is_listed_without_its_md(folder: Path) -> None:
+async def test_markdown_is_listed_with_its_md(folder: Path) -> None:
     (folder / "notes.txt").write_text("plain\n")
     app = TmrApp(folder)
     async with app.run_test(size=(100, 30)) as pilot:
@@ -344,9 +344,8 @@ async def test_markdown_is_listed_without_its_md(folder: Path) -> None:
         await pilot.press("a")
         await settle(pilot)
         shown = [app.tree.render_line(y).text.strip() for y in range(app.tree.size.height)]
-        assert "README" in shown and "README.md" not in shown
-        assert "notes.txt" in shown, "other files keep their extension"
-        assert "README.md" in tree_labels(app), "only the drawing leaves it off"
+        assert "README.md" in shown
+        assert "notes.txt" in shown
 
 
 async def test_folder_at_top_of_sidebar(folder: Path) -> None:
